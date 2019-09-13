@@ -3,6 +3,7 @@ const keys = require("./keys.js");
 const axios = require("axios");
 const fs = require("fs");
 const moment =require(string)
+const spotify = require('node-spotify-api');
 
 // uses spotify, omdb, imdb
 //use const for everything 
@@ -19,17 +20,16 @@ axios.get(queryUrl).then(
         let everything = [
             "Name: " + response.data.name + "\n",
             "Venue: " + response.data.venue + "\n",
-            " Date: " + (moment(bandResponse.data[0].datetime).format("MM/DD/YYYY")) "\n",
+            " Date: " + (moment(bandResponse.data[0].date).format("MM/DD/YYYY")),
           ].join("");
      console.log(JSON.stringify(data, null, 2));
-
+        })
 // get song results 
 //spotify to get all of these things
 //spotify-this-song
 //spotify-this-song '<song name here>'
-const spotify = require('node-spotify-api');
 const spotify = new spotify(keys.spotify);
-spotify.search()
+spotify.request("https://api.spotify.com/v1/search" + song )
 .then (function(response3){
     let everything3 =[
         "Artist :" + response3.data.Artist + "\n",
@@ -38,8 +38,7 @@ spotify.search()
         "Album: "  + response3.data.Album  + "\n",
     ].join("");
     console.log(JSON.stringify(data, null, 2));
-}
-
+})
 
 //movie-this
 //movie result based on the actor or movie name
@@ -55,13 +54,14 @@ axios.get(queryUrl2).then(
         let everything2 = [
             "title: " + response2.data.title + "\n",
             "year: " + response2.data.year + "\n",
-            " imdbrating: " + response2.data.imdbrating.average + "\n",
-            "rottenrating " + response2.data.rottenrating.average + "\n",
+            " imdbRating: " + response2.data.imdbRating.average + "\n",
+            "rottenRating " + response2.data.rottenRating.average + "\n",
             "country: " + response2.data.country + "\n",
-            "languages" + response2.data.languages[4] + "\n"
+            "languages" + response2.data.languages[4] + "\n",
             "plot: " + response2.data.plot + "\n",
             "actors:" + response2.data.actors + "\n",
           ].join("");
+        
     then.function(response.everything2);{
    
         if (everything2.confirms)
@@ -71,7 +71,7 @@ axios.get(queryUrl2).then(
     queryURL = term || "Mr.Nobody",
     axios.get("http://omdbapi.com/?apikey=triligy&limit=1&t=" + myQuery))}
     console.log(JSON.stringify(data, null, 2));
-
+    }
 // have it search by what it wants//
 //do-what-it-says//
 function whatInfo(){
@@ -100,11 +100,40 @@ switch (topic){
          break;
   
      case "movie-this":
-          movieInfo();
+          movieName();
           break;
   
      case "do-what-it-says":
           whatInfo();
           break;
+}
+function bandInfo(){
+    let artist = "";
+    for (var i = 5; i < input.length; i++) {
+
+        if (i > 2 && i < input.length) {
+          artist = artist + "+" + input[i];
+        } else {
+          artist += input[i];
+};
+
+function songInfo(){
+    let song = "";
+    for (var i = 5; i < input.length; i++) {
+
+        if (i > 5 && i < input.length) {
+          song = song + "+" + input[i];
+        } else {
+          song += input[i];
+};
+
+function movieInfo(){
+    let movieName = "";
+    for (var i = 5; i < input.length; i++) {
+
+    if (i > 5 && i < input.length) {
+      movieName = movieName + "+" + input[i];
+    } else {
+      movieName += input[i];
 
 }
