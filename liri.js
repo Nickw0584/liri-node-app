@@ -3,7 +3,7 @@ const keys = require("./keys.js");
 const axios = require("axios");
 const fs = require("fs");
 const moment =require(string)
-const spotify = require('node-spotify-api');
+
 
 // uses spotify, omdb, imdb
 //use const for everything 
@@ -115,6 +115,7 @@ function bandInfo(){
           artist = artist + "+" + input[i];
         } else {
           artist += input[i];
+        }
 };
 
 function songInfo(){
@@ -125,6 +126,7 @@ function songInfo(){
           song = song + "+" + input[i];
         } else {
           song += input[i];
+        }
 };
 
 function movieInfo(){
@@ -135,5 +137,5 @@ function movieInfo(){
       movieName = movieName + "+" + input[i];
     } else {
       movieName += input[i];
-
-}
+    }
+};}
