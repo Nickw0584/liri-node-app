@@ -10,3 +10,5 @@
  There are a lot of bot projects that are coded on the internet or do basic callback searches and that would be the best place to start.
 
  The maintaining of this project wil be done by those that are manipulating the code that they find.
+
+ Link showing the function of the app. https://drive.google.com/file/d/1P-CFtW7_52iCgMAirL_8JUSP4FRDXH4s/view
